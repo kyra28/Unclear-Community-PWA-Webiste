@@ -1,2 +1,116 @@
-<app-slider></app-slider>
-<app-news></app-news>
+<!-- Render JavaScript alerts here -->
+<div class="alert-area"></div>
+
+<section class="page page-news page-news-show-stream">
+  <div class="items">
+    <div class="item video" data-timestamp="1557473314" data-time-offset="0" data-more=0>
+      <div class="meta above clearfix">
+        <div class="category">
+          <i class="fab fa-youtube "></i> Vidéo
+        </div>
+      </div>
+
+      <a class="image text-hide" href="videos/3/unclear-reborn" style="background-image: url(https://img.youtube.com/vi/wmYBIj6vIb0/mqdefault.jpg)">UNCLEAR REBORN
+      </a>
+
+      <h2 title="UNCLEAR REBORN">
+        <a href="videos/3/unclear-reborn">UNCLEAR REBORN</a>
+      </h2>
+
+      <div class="meta below">
+        <time>10-05-2019</time> - <a href="https://unclear-community.fr/users/3/chemaxou">Chemaxou</a>
+      </div>
+    </div>
+    <div class="item video" data-timestamp="1557464545" data-time-offset="0" data-more=0>
+      <div class="meta above clearfix">
+        <div class="category">
+          <i class="fab fa-youtube "></i> Vidéo
+        </div>
+      </div>
+
+      <a class="image text-hide" href="videos/5/unclear-community-a-la-lyon-esport-2019" style="background-image: url(https://img.youtube.com/vi/CezrjuoLNsA/mqdefault.jpg)">UNCLEAR COMMUNITY A LA LYON ESPORT 2019 !
+      </a>
+
+      <h2 title="UNCLEAR COMMUNITY A LA LYON ESPORT 2019 !">
+        <a href="videos/5/unclear-community-a-la-lyon-esport-2019">UNCLEAR COMMUNITY A LA LYON ESPORT 2019 !</a>
+      </h2>
+
+      <div class="meta below">
+        <time>10-05-2019</time> - <a href="https://unclear-community.fr/users/3/chemaxou">Chemaxou</a>
+      </div>
+    </div>
+    <div class="item video" data-timestamp="1557446337" data-time-offset="0" data-more=0>
+      <div class="meta above clearfix">
+        <div class="category">
+          <i class="fab fa-youtube "></i> Vidéo
+        </div>
+      </div>
+
+      <a class="image text-hide" href="videos/4/souscrivez-a-un-abonnement" style="background-image: url(https://img.youtube.com/vi/4HO7lDqC_Qg/mqdefault.jpg)">SOUSCRIVEZ A UN ABONNEMENT !
+      </a>
+
+      <h2 title="SOUSCRIVEZ A UN ABONNEMENT !">
+        <a href="videos/4/souscrivez-a-un-abonnement">SOUSCRIVEZ A UN ABONNEMENT !</a>
+      </h2>
+
+      <div class="meta below">
+        <time>09-05-2019</time> - <a href="https://unclear-community.fr/users/3/chemaxou">Chemaxou</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="clearfix"></div>
+
+  <div class="loading hidden text-center"><i class="fas fa-spinner fa-spin"></i> Chargement…</div>
+
+  <script>
+    $(document).ready(function()
+    {
+      var timestamp = 0;
+      var loading = false;
+      var lastScrollTop = 0;
+
+      $(document).scroll(function()
+      {
+        var scrollTop = $(this).scrollTop();
+
+        if (scrollTop < lastScrollTop || ! 0) {
+          return;
+        }
+        lastScrollTop = scrollTop;
+
+        var scrollBottom = scrollTop + $(window).height();
+
+        var $lastItem = $('.page .item').last();
+        if ($lastItem.length > 0) {
+          var lastItemBottom = $lastItem.offset().top + $lastItem.height();
+
+          if (scrollBottom > lastItemBottom) {
+            timestamp = parseInt($lastItem.attr('data-timestamp')) - 1;
+
+            if (! loading) {
+              loading = true;
+              $('.page .loading').removeClass('hidden');
+
+              $.get(contentify.baseUrl + 'news/showStream/' + timestamp, function(data)
+              {
+                var $items = $(data).addClass('new');
+                $('.page .items').append($items).append('<div class="bugfix"></div>');
+                $('.page .items .bugfix').last().hide().show(0); // Force browsers to show CSS transitions
+                $items.removeClass('new');
+              }).always(function()
+              {
+                if ($('.page .items .item').last().attr('data-more') == 1) {
+                  loading = false;
+                }
+                $('.page .loading').addClass('hidden');
+              });
+            }
+          }
+        }
+
+      });
+    });
+  </script>
+
+</section>
