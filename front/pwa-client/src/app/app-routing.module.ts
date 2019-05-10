@@ -7,7 +7,7 @@ import {MatchesComponent} from "./components/tabs/matches/matches.component";
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'teams', component: TeamsComponent},
-  { path: 'teams', component: MatchesComponent}
+  { path: 'matches', component: MatchesComponent}
 ];
 
 @NgModule({
