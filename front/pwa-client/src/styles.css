@@ -1,4 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Titillium+Web:400,300,700);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css);
+
+/*
+.fab {
+  src: url("/assets/css/webfonts/fa-regular-400.eot");
+  src: url("/assets/css/webfonts/fa-regular-400.eot?#iefix") format("embedded-opentype"), url("/assets/css/webfonts/fa-regular-400.woff2") format("woff2"), url("/assets/css/webfonts/fa-regular-400.woff") format("woff"), url("/assets/css/webfonts/fa-regular-400.ttf") format("truetype"), url("/assets/css/webfonts/fa-regular-400.svg#fontawesome") format("svg"); }
+
+*/
 /*
  * Imports
  */
