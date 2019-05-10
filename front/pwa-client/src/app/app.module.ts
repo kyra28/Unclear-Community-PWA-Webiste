@@ -13,6 +13,7 @@ import { TabsComponent } from './components/tabs/tabs.component';
 import {HomeComponent} from "./components/tabs/home/home.component";
 import { NewsComponent } from './components/tabs/home/news/news.component';
 import { TeamsComponent } from './components/tabs/teams/teams.component';
+import { MatchesComponent } from './components/tabs/matches/matches.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { TeamsComponent } from './components/tabs/teams/teams.component';
     SidebarComponent,
     TabsComponent,
     NewsComponent,
-    TeamsComponent
+    TeamsComponent,
+    MatchesComponent
   ],
   imports: [
     BrowserModule,
