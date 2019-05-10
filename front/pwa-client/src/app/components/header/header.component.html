@@ -18,11 +18,9 @@
     <div class="container">
       <ul>
         <li class="icon"><i class="fas fa-bars "></i></li>
-        <li><a href="/" class="active">Accueil</a></li>
-        <li><a href="/teams">Equipes</a></li>
-        <li><a href="/news">News</a></li>
-        <li><a href="/matches">Matches</a></li>
-        <li><a href="/streams">Streams</a></li>
+        <li><a routerLink="" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active">Accueil</a></li>
+        <li><a routerLink="/teams" routerLinkActive="active">Equipes</a></li>
+        <li><a routerLink="/matches" routerLinkActive="active">Matches</a></li>
       </ul>
       <div class="right">
         <a class="social-link" href="https://www.facebook.com/unclearcomm" target="_blank" title="Facebook"><i class="fab fa-facebook "></i></a>
