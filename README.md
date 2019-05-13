@@ -6,7 +6,7 @@
 <p align="center">
   
 <h1> Unclear-Community-WPA-Webiste </h1>
-https://pwa-client.web.app/
+https://pwa-client.firebaseapp.com/
 </p>
 
 # Getting started : Back-end
