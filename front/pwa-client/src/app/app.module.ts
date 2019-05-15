@@ -10,9 +10,14 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TabComponent } from './components/tabs/tab.component';
-import {HomeComponent} from "./components/tabs/home/home.component";
+import {HomeComponent} from './components/tabs/home/home.component';
 import { TeamsComponent } from './components/tabs/teams/teams.component';
+import { TeamComponent } from './components/tabs/teams/team/team.component';
 import { MatchesComponent } from './components/tabs/matches/matches.component';
+
+import { HttpClientModule } from '@angular/common/http';
+import {DataService} from './services/app-data-service';
+import {Configuration} from './app.constants';
 
 @NgModule({
   declarations: [
@@ -24,14 +29,16 @@ import { MatchesComponent } from './components/tabs/matches/matches.component';
     SidebarComponent,
     TabComponent,
     TeamsComponent,
+    TeamComponent,
     MatchesComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [],
+  providers: [Configuration, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
