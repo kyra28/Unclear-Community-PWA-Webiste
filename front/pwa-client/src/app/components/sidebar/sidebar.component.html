@@ -2,12 +2,12 @@
   <div class="border">
     <h3>
       Partenaires
-      <a href="/partners"><i class="fas fa-plus "></i></a>
+      <a [routerLink]="['/partners']"><i class="fas fa-plus "></i></a>
     </h3>
     <div class="widget widget-partners">
       <ul class="list-unstyled">
         <li>
-          <a href="/partners/url/1" title="Ikoula" target="_blank">
+          <a [routerLink]="['/partners']" title="Ikoula" target="_blank">
             <img class="filter" src="assets/img/partners/1_image.png" alt="Ikoula">
           </a>
         </li>
@@ -16,7 +16,7 @@
     <br>
     <h3>
       Derniers Evenements
-      <a href="/events" title="Lire plus..."><i class="fas fa-plus "></i></a>
+      <a [routerLink]="['/events']" title="Lire plus..."><i class="fas fa-plus "></i></a>
     </h3>
     <div class="widget widget-matches-latest">
       <ul class="list-unstyled">
