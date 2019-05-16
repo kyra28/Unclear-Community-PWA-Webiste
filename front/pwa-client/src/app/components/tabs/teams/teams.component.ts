@@ -8,7 +8,7 @@ import {DataService} from '../../../services/app-data-service';
 })
 export class TeamsComponent implements OnInit {
 
-  private teams: any[];
+  teams: any[];
 
   constructor(private dataService: DataService) { }
 

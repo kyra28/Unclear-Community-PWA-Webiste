@@ -8,7 +8,7 @@ import {DataService} from '../../../services/app-data-service';
 })
 export class HomeComponent implements OnInit {
 
-  private newsList: any[];
+  newsList: any[];
 
   constructor(private dataService: DataService) { }
 

@@ -8,7 +8,7 @@ import {DataService} from '../../../services/app-data-service';
 })
 export class EventsComponent implements OnInit {
 
-  private events: any[];
+  events: any[];
 
   constructor(private dataService: DataService) { }
 

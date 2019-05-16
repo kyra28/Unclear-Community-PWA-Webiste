@@ -8,7 +8,7 @@ import {DataService} from '../../../services/app-data-service';
 })
 export class PartnersComponent implements OnInit {
 
-  private partners: any[];
+  partners: any[];
 
   constructor(private dataService: DataService) { }
 

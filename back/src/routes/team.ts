@@ -20,7 +20,6 @@ router.get('', function(req, res) {
             res.send({status :0});
         } else{
             res.setHeader('Content-Type','application/json');
-            res.setHeader('Access-Control-Allow-Origin','http://localhost:4200');
             res.send(data);
         }
     });

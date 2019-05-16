@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PartnerComponent implements OnInit {
 
   @Input()
-  partner: any[];
+  partner: any;
 
   constructor() { }
 
