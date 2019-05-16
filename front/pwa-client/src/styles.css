@@ -7343,7 +7343,7 @@ textarea.model-search-box input {
   width: 100px;
   margin: 0 20px 20px 20px;
   text-align: center;
-  background: url('/assets/img/file.png');
+  background: url('/front/pwa-client/src/assets/img/background.jpg');
   background-position: center top;
   background-repeat: no-repeat;
 }
