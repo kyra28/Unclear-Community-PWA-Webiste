@@ -5,6 +5,8 @@ services:
     build: .
     ports:
       - 3000:3000
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
 
   db:
     image: postgres:11

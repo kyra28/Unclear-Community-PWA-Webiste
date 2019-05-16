@@ -6,7 +6,6 @@
     <ul class="list-inline">
       <li>Lineup:</li>
       <div *ngFor="let player of this.team.players">
-        <app-team [team]="team"></app-team>
         <li>
           <p>{{player.pseudo}}</p>
         </li>

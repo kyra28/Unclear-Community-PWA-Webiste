@@ -2,52 +2,55 @@ import * as models from '../models/model';
 var router = require('express').Router();
 
 router.post('', function(req, res) {
-    models.Team.create({
-        name: req.body.name,
-        game: req.body.game,
-        logo: req.body.logo
+    var type = "Other";
+    if (req.body.type)
+        type = req.body.type;
+
+    models.Event.create({
+        title: req.body.title,
+        type: type,
+        details: req.body.details,
+        date: req.body.date,
+        type_id: req.body.type_id
     }).then(function() {
-        res.setHeader('Content-Type','application/json');
-        res.send({status :1});
+        res.json({status :1});
     });
 });
 
 router.get('', function(req, res) {
-    models.Team.findAll({
-        include: [models.Player]
+    models.Event.findAll({
+        order: [['date', 'DESC']]
     }).then(function(data) {
         if(data.length == 0){
             res.send({status :0});
         } else{
-            res.setHeader('Content-Type','application/json');
-            res.setHeader('Access-Control-Allow-Origin','http://localhost:4200');
-            res.send(data);
+            res.json(data);
         }
     });
 });
 
 router.get('/:id', function(req, res) {
-    models.Team.findOne({
+    models.Event.findOne({
         where: {
             id: req.params.id
-        },
-        include: [models.Player]
+        }
     }).then(function(data) {
         if(data.length == 0){
             res.send({status :0});
         } else{
-            res.setHeader('Content-Type','application/json');
-            res.send(data);
+            res.json(data);
         }
     });
 });
 
 router.put('/:id', function(req, res) {
-    models.Team.update(
+    models.Event.update(
         {
-            name: req.body.name,
-            game: req.body.game,
-            logo: req.body.logo
+            title: req.body.title,
+            type: req.body.type,
+            details: req.body.details,
+            date: req.body.date,
+            type_id: req.body.type_id
         },
         {
             where: {
@@ -60,7 +63,7 @@ router.put('/:id', function(req, res) {
 });
 
 router.delete('/:id', function(req, res) {
-    models.Team.destroy({
+    models.Event.destroy({
         where: {
             id: req.params.id
         }

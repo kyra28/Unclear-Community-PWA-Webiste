@@ -5,7 +5,8 @@ router.post('', function(req, res) {
     models.Player.create({
         pseudo: req.body.pseudo,
         logo: req.body.logo,
-        arrivingDate: req.body.arrivingDate
+        arrivingDate: req.body.arrivingDate,
+        team_id: req.body.team_id
     }).then(function() {
         res.setHeader('Content-Type','application/json');
         res.send({status :1});
@@ -25,7 +26,7 @@ router.get('', function(req, res) {
 });
 
 router.get('/:id', function(req, res) {
-    models.Player.findAll({
+    models.Player.findOne({
         where: {
             id: req.params.id
         }
@@ -44,7 +45,8 @@ router.put('/:id', function(req, res) {
         {
             pseudo: req.body.pseudo,
             logo: req.body.logo,
-            arrivingDate: req.body.arrivingDate
+            arrivingDate: req.body.arrivingDate,
+            team_id: req.body.team_id
         },
         {
             where: {

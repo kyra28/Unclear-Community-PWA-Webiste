@@ -8,11 +8,12 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TeamComponent implements OnInit {
 
   @Input()
-  team: any[];
+  team: any;
 
   constructor() { }
 
   ngOnInit() {
+    console.log(JSON.stringify(this.team));
   }
 
 }

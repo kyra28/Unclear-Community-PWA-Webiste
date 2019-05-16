@@ -3,59 +3,19 @@
 
 <section class="page page-news page-news-show-stream">
   <div class="items">
-    <div class="item video" data-timestamp="1557473314" data-time-offset="0" data-more=0>
-      <div class="meta above clearfix">
-        <div class="category">
-          <i class="fab fa-youtube "></i> Vidéo
-        </div>
-      </div>
-
-      <a class="image text-hide" href="videos/3/unclear-reborn" style="background-image: url(https://img.youtube.com/vi/wmYBIj6vIb0/mqdefault.jpg)">UNCLEAR REBORN
-      </a>
-
-      <h2 title="UNCLEAR REBORN">
-        <a href="videos/3/unclear-reborn">UNCLEAR REBORN</a>
-      </h2>
-
-      <div class="meta below">
-        <time>10-05-2019</time> - <a href="https://unclear-community.fr/users/3/chemaxou">Chemaxou</a>
-      </div>
-    </div>
-    <div class="item video" data-timestamp="1557464545" data-time-offset="0" data-more=0>
-      <div class="meta above clearfix">
-        <div class="category">
-          <i class="fab fa-youtube "></i> Vidéo
-        </div>
-      </div>
-
-      <a class="image text-hide" href="videos/5/unclear-community-a-la-lyon-esport-2019" style="background-image: url(https://img.youtube.com/vi/CezrjuoLNsA/mqdefault.jpg)">UNCLEAR COMMUNITY A LA LYON ESPORT 2019 !
-      </a>
-
-      <h2 title="UNCLEAR COMMUNITY A LA LYON ESPORT 2019 !">
-        <a href="videos/5/unclear-community-a-la-lyon-esport-2019">UNCLEAR COMMUNITY A LA LYON ESPORT 2019 !</a>
-      </h2>
-
-      <div class="meta below">
-        <time>10-05-2019</time> - <a href="https://unclear-community.fr/users/3/chemaxou">Chemaxou</a>
-      </div>
-    </div>
-    <div class="item video" data-timestamp="1557446337" data-time-offset="0" data-more=0>
-      <div class="meta above clearfix">
-        <div class="category">
-          <i class="fab fa-youtube "></i> Vidéo
-        </div>
-      </div>
-
-      <a class="image text-hide" href="videos/4/souscrivez-a-un-abonnement" style="background-image: url(https://img.youtube.com/vi/4HO7lDqC_Qg/mqdefault.jpg)">SOUSCRIVEZ A UN ABONNEMENT !
-      </a>
-
-      <h2 title="SOUSCRIVEZ A UN ABONNEMENT !">
-        <a href="videos/4/souscrivez-a-un-abonnement">SOUSCRIVEZ A UN ABONNEMENT !</a>
-      </h2>
-
-      <div class="meta below">
-        <time>09-05-2019</time> - <a href="https://unclear-community.fr/users/3/chemaxou">Chemaxou</a>
-      </div>
+    <div *ngFor="let news of this.newsList">
+        <div class="item news">
+            <a class="image text-hide" [routerLink]="['/news',this.news.id]" style="background-image: url({{this.news.image}}">
+            </a>
+            
+            <h2 title="{{this.news.title}}">
+                <a [routerLink]="['/news',this.news.id]">{{this.news.title}}</a>
+            </h2>
+          
+            <div class="meta below">
+                <time>{{this.news.publishedAt | date : "MMMM d, y"}}</time> - {{this.news.admin.pseudo}}
+            </div>
+          </div>
     </div>
   </div>
 

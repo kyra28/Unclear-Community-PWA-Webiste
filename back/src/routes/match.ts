@@ -2,16 +2,26 @@ import * as models from '../models/model';
 var router = require('express').Router();
 
 router.post('', function(req, res) {
-    models.Match.create({
-        equipe1: req.body.equipe1,
-        equipe2: req.body.equipe2,
-        score1: req.body.score1,
-        score2: req.body.score2,
-        vainqueur: req.body.vainqueur,
+    models.Event.create({
+        title: req.body.title,
+        type: "Match",
         details: req.body.details,
         date: req.body.date
-    }).then(function() {
-        res.json({status :1});
+    }).then(function(eventData) {
+        models.Match.create({
+            equipe1: req.body.equipe1,
+            equipe2: req.body.equipe2,
+            score1: req.body.score1,
+            score2: req.body.score2,
+            vainqueur: req.body.vainqueur,
+            event_id: eventData.id
+        }).then(function(matchData) {
+            eventData.update({
+                type_id: matchData.id
+            }).then(function(){
+                res.json({status :1});
+            });
+        });
     });
 });
 

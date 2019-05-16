@@ -1,4 +1,4 @@
-CREATE TABLE admins
+CREATE TABLE admin
 (
     "id" SERIAL PRIMARY KEY,
     "pseudo" VARCHAR(30) NOT NULL,
@@ -16,14 +16,14 @@ CREATE TABLE news
     "title" VARCHAR(255) NOT NULL,
     "content" TEXT NOT NULL,
     "image" VARCHAR(255),
-    "author_id" INTEGER REFERENCES admins(id),
+    "author_id" INTEGER REFERENCES admin(id),
     "publishedAt" timestamp,
     "createdAt" timestamp,
     "updatedAt" timestamp
 );
 
 
-CREATE TABLE teams
+CREATE TABLE team
 (
     "id" SERIAL PRIMARY KEY,
     "name" VARCHAR(100) NOT NULL,
@@ -38,27 +38,38 @@ CREATE TABLE player
     "id" SERIAL PRIMARY KEY,
     "pseudo" VARCHAR(100) NOT NULL,
     "logo" VARCHAR(255),
-	"team_id" INTEGER REFERENCES teams(id),
+	"team_id" INTEGER REFERENCES team(id),
     "arrivingDate" timestamp,
     "createdAt" timestamp,
     "updatedAt" timestamp
 );
 
-CREATE TABLE matchs
+CREATE TABLE event
 (
     "id" SERIAL PRIMARY KEY,
-	"equipe1" VARCHAR(100) NOT NULL,
-	"equipe2" VARCHAR(100) NOT NULL,
-	"score1" INTEGER,
-	"score2" INTEGER,
-    "vainqueur" VARCHAR(100) NOT NULL,
+    "title" VARCHAR(255) NOT NULL,
+    "type" VARCHAR(20),
+    "type_id" INTEGER,
     "details" TEXT,
 	"date" timestamp,
     "createdAt" timestamp,
     "updatedAt" timestamp
 );
 
-CREATE TABLE partners
+CREATE TABLE match
+(
+    "id" SERIAL PRIMARY KEY,
+	"equipe1" VARCHAR(100) NOT NULL,
+	"equipe2" VARCHAR(100) NOT NULL,
+	"score1" INTEGER,
+	"score2" INTEGER,
+    "vainqueur" VARCHAR(100),
+    "event_id" INTEGER REFERENCES event(id),
+    "createdAt" timestamp,
+    "updatedAt" timestamp
+);
+
+CREATE TABLE partner
 (
     "id" SERIAL PRIMARY KEY,
 	"name" VARCHAR(100) NOT NULL,

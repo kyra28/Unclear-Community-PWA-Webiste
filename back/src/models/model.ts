@@ -1,6 +1,11 @@
 export const Sequelize = require('sequelize');
-
-const sequelize = new Sequelize('postgres://user:pass@db:5432/db');
+var opts = {
+    define: {
+        //prevent sequelize from pluralizing table names
+        freezeTableName: true
+    }
+}
+const sequelize = new Sequelize('postgres://user:pass@db:5432/db',opts);
 
 
 export const Admin = sequelize.define('admin', {
@@ -75,12 +80,24 @@ export const Match = sequelize.define('match', {
     },
     vainqueur: {
         type: Sequelize.STRING
+    }
+});
+
+export const Event = sequelize.define('event', {
+    title: {
+        type: Sequelize.STRING
     },
     details: {
         type: Sequelize.STRING
     },
     date: {
         type: Sequelize.DATE
+    },
+    type: {
+        type: Sequelize.ENUM('Match', 'Other')
+    },
+    type_id: {
+        type: Sequelize.INTEGER
     }
 });
 
@@ -104,3 +121,6 @@ News.belongsTo(Admin, {foreignKey: 'author_id', targetKey: 'id'});
 
 Team.hasMany(Player, {foreignKey: 'team_id', sourceKey: 'id'});
 Player.belongsTo(Team, {foreignKey: 'team_id', targetKey: 'id'});
+
+Event.hasOne(Match, {foreignKey: 'event_id', sourceKey: 'id'});
+Match.belongsTo(Event, {foreignKey: 'event_id', targetKey: 'id'});

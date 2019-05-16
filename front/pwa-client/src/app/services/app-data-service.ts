@@ -21,8 +21,8 @@ export class DataService {
         return this.http.get<T>(this.actionUrl + path);
     }
 
-    public getSingle<T>(path: string): Observable<T> {
-        return this.http.get<T>(this.actionUrl + path);
+    public get<T>(path: string, id: string): Observable<T> {
+        return this.http.get<T>(this.actionUrl + path + '/' + id);
     }
 
     public add<T>(path: string, itemName: any): Observable<T> {

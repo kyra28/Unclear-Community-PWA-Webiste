@@ -2,26 +2,26 @@ import { Component, OnInit } from '@angular/core';
 import {DataService} from '../../../services/app-data-service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-events',
+  templateUrl: './events.component.html',
+  styleUrls: ['./events.component.css']
 })
-export class HomeComponent implements OnInit {
+export class EventsComponent implements OnInit {
 
-  private newsList: any[];
+  private events: any[];
 
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
     this.dataService
-      .getAll<any[]>('news')
-      .subscribe((data: any[]) => this.newsList = data,
+      .getAll<any[]>('event')
+      .subscribe((data: any[]) => this.events = data,
         error => () => {
           console.log('error');
         },
         () => {
           console.log('success');
-          console.log(JSON.stringify(this.newsList));
+          console.log(JSON.stringify(this.events));
         });
   }
 

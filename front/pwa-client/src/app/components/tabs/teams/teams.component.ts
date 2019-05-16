@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {DataService} from '../../../services/app-data-service';
-import { toTypeScript } from '@angular/compiler';
 
 @Component({
   selector: 'app-teams',
@@ -22,6 +21,7 @@ export class TeamsComponent implements OnInit {
         },
         () => {
           console.log('success');
+          console.log(JSON.stringify(this.teams));
         });
   }
 
