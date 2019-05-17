@@ -23,5 +23,16 @@
         ]
       }
     }
+  ],
+  "dataGroups": [
+    {
+        "name": "backApi",
+        "urls": ["https://unclear-community.fr:3000/**"],
+        "cacheConfig": {
+            "maxSize": 100,
+            "maxAge": "7d",
+            "strategy": "performance"
+        }
+    }
   ]
 }
