@@ -40,7 +40,8 @@ import { MatchComponent } from './components/tabs/events/match/match.component';
     NewsComponent,
     EventsComponent,
     EventComponent,
-    MatchComponent
+    MatchComponent,
+
   ],
   imports: [
     HttpClientModule,
