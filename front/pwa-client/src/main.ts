@@ -10,3 +10,13 @@ if (environment.production) {
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
+
+$(document).ready(function()
+{
+  var $nav = $('#header nav');
+
+  $('#header nav .icon').click(function(event)
+  {
+    $nav.toggleClass('max');
+  });
+});

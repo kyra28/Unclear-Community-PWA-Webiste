@@ -18,60 +18,17 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="theme-color" content="#009688">
   <!-- Title -->
-  <title>News - Unclear Community</title>
+  <title>Unclear Community</title>
   <!-- Images -->
   <link rel="icon" type="image/png" href="assets/icons/favicon_180.png">
   <link rel="shortcut icon" type="picture/x-icon" href="assets/icons/favicon.png">
   <!-- Libraries-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-
   <base href="/">
 </head>
 <body>
 <app-root></app-root>
 </body>
-
-
-<script>
-  $(document).ready(function()
-  {
-    var navKey = 'navIndex';
-    var navIndex = sessionStorage.getItem(navKey);
-    var $nav = $('#header nav');
-
-    if (typeof navIndex === 'undefined') {
-      navIndex = 0;
-    }
-
-    if (navIndex > 0) {
-      $nav.find('a').removeClass('active');
-      $nav.find('a:eq(' + navIndex + ')').addClass('active');
-    }
-
-    $nav.find('a').click(function(event)
-    {
-      var offset = $(this).parent().parent().find('li.icon').length;
-      sessionStorage.setItem(navKey, $(this).parent().index() - offset); // -offset because of icon li
-    });
-
-    $('#header nav .icon').click(function(event)
-    {
-      $nav.toggleClass('max');
-    });
-
-    var gdprKey = 'gdprAlertAccepted';
-    var gdprAlertAccepted = localStorage.getItem(gdprKey);
-    if (! gdprAlertAccepted) {
-      var $gdprAlert = $('#gdpr-alert');
-      $gdprAlert.removeClass('hidden');
-      $gdprAlert.find('.btn').click(function(event)
-      {
-        localStorage.setItem(gdprKey, "1");
-      });
-    }
-  });
-</script>
-
 </html>
 
